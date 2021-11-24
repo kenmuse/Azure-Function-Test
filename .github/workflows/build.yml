@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 env:
   DOTNET_VERSION: '6.0.x'              # set this to the dotnet version to use
