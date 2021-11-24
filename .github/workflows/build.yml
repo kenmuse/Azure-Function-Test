@@ -29,9 +29,11 @@ jobs:
       #  -r linux-x64 --self-contained true /p:UseAppHost=true
 
     - name: 'Zip binaries'
-      uses: montudor/action-zip@v1
+      uses: papeloto/action-zip@v1
       with:
-        args: zip -qq -r ./function.zip ./publish/*
+        dest: function.zip
+        files: publish/*
+        recursive: true
 
     - name: Publish Tags
       uses: ncipollo/release-action@v1
