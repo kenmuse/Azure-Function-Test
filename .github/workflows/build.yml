@@ -25,14 +25,14 @@ jobs:
 
     - name: 'Resolve Project Dependencies Using Dotnet'
       shell: bash
-      run: dotnet publish --configuration Release --output ./publish
+      run: dotnet publish --configuration Release --output $RUNNER_TEMP/publish
       #  -r linux-x64 --self-contained true /p:UseAppHost=true
 
     - name: 'Zip binaries'
       uses: papeloto/action-zip@v1
       with:
-        dest: function.zip
-        files: publish/*
+        dest: $RUNNER_TEMP/function.zip
+        files: $RUNNER_TEMP/publish/
         recursive: true
 
     - name: Publish Tags
@@ -41,4 +41,4 @@ jobs:
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
-        artifacts: ./function.zip
+        artifacts: $RUNNER_TEMP/function.zip
