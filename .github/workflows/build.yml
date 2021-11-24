@@ -32,7 +32,7 @@ jobs:
       uses: montudor/action-zip@v1
 
     - name: Package Files
-      run: zip -qq -r $RUNNER_TEMP/function.zip .
+      run: zip -qq -r ../function.zip .
       working-directory: ./publish
 
     - name: Publish Tags
@@ -41,4 +41,4 @@ jobs:
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
-        artifacts: $RUNNER_TEMP/function.zip
+        artifacts: ./function.zip
