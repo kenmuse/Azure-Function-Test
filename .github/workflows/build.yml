@@ -25,15 +25,16 @@ jobs:
 
     - name: 'Resolve Project Dependencies Using Dotnet'
       shell: bash
-      run: dotnet publish --configuration Release --output $RUNNER_TEMP/publish
+      run: dotnet publish --configuration Release --output ./publish
       #  -r linux-x64 --self-contained true /p:UseAppHost=true
 
-    - name: 'Zip binaries'
-      uses: papeloto/action-zip@v1
+    - name: Install ZIP
+      uses: montudor/action-zip@v1
+
+    - name: Package Files
       with:
-        dest: $RUNNER_TEMP/function.zip
-        files: $RUNNER_TEMP/publish/
-        recursive: true
+        run: zip -qq -r $RUNNER_TEMP/function.zip .
+        working-directory: ./publish
 
     - name: Publish Tags
       uses: ncipollo/release-action@v1
