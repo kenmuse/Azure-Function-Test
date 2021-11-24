@@ -1,0 +1,1 @@
+ Azure Functions 4 / .NET 6
