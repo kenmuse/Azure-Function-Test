@@ -32,9 +32,8 @@ jobs:
       uses: montudor/action-zip@v1
 
     - name: Package Files
-      with:
-        run: zip -qq -r $RUNNER_TEMP/function.zip .
-        working-directory: ./publish
+      run: zip -qq -r $RUNNER_TEMP/function.zip .
+      working-directory: ./publish
 
     - name: Publish Tags
       uses: ncipollo/release-action@v1
